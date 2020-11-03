@@ -1,45 +1,44 @@
-# Tap Payment package for Laravel
+# About
 
-Laravel package for https://www.tap.company
+Integration library with https://www.tap.company
 
 ## Installation
 
-Add `vmdevelopment/laravel-tap-payments` to your `composer.json`.
 ```
-"vmdevelopment/laravel-tap-payments": "dev-master"
-```
-
-Run `composer update` to pull down the latest version of package.
-
-OR simply run
-```
-composer require "vmdevelopment/laravel-tap-payments"
+composer require "spacemudd/laravel-tap-payments"
 ```
 
-For laravel >=5.5 that's all. This package supports Laravel new Package Discovery.
+## For older versions of Laravel (<5.5)
 
-Otherwise you need to open up `/config/app.php` and add the service provider to your `providers` array.
-```php
+Update your `/config/app.php` with:
+
+```
 'providers' => [
+    ...
 	\VMdevelopment\TapPayment\TapPaymentServiceProvider::class
 ]
 ```
 
-Now add the alias.
-```php
+```
 'aliases' => [
+    ...
 	'TapPayment' => \VMdevelopment\TapPayment\Facade\TapPayment::class
 ]
 ```
 
-## Configuration
-To publish config run
+## Publishing
+
 ```
 php artisan vendor:publish --provider="VMdevelopment\TapPayment\TapPaymentServiceProvider"
 ```
-and modify the config file with your own information. File is located in `/config/tap-payment.php`
 
-you can use this environment variables in your `.env` file
+
+# Config
+
+Update `/config/tap-payment.php` with your info.
+
+Add the following to your .env file:
+
 ```
 TAP_PAYMENT_API_KEY=your_api_key
 ```
@@ -51,54 +50,44 @@ TAP_PAYMENT_API_KEY=your_api_key
 
 ## Usage example
 
-### Creating Charge(make payment)
+### Creating a charge
+
 ```php
 use VMdevelopment\TapPayment\Facade\TapPayment;
 
 public function pay()
 {
-	try{
-
+	try {
 		$payment = TapPayment::createCharge();
-
-		$payment->setCustomerName( "John Doe" );
-		
-		$payment->setCustomerPhone( "123456789" );
-		
-		$payment->setDescription( "Some description" );
-
-		$payment->setAmount( 123 );
-
-		$payment->setCurrency( "KWD" );
-		
-		$payment->setSource( "src_kw.knet" );
-        
-		$payment->setRedirectUrl( "https://example.com" );
-
-		$payment->setPostUrl( "https://example.com" ); // if you are using post request to handle payment updates
-
-		$payment->setMetaData( [ 'package' => json_encode( $package ) ] ); // if you want to send metadata
-
+		$payment->setCustomerName("John Doe");
+		$payment->setCustomerPhone("123456789");
+		$payment->setDescription("Some description");
+		$payment->setAmount(123);
+		$payment->setCurrency("KWD");
+		$payment->setSource("src_kw.knet");
+		$payment->setRedirectUrl("https://example.com");
+		$payment->setPostUrl("https://example.com"); // if you are using post request to handle payment updates
+		$payment->setMetaData(['package' => json_encode($package)]); // if you want to send metadata
 		$invoice = $payment->pay();
-		
-	} catch( \Exception $exception ){
+	} catch( \Exception $exception ) {
 		// your handling of request failure
 	}
     
-    $payment->isSuccess() // check if TapPayment has successfully handled request.
+    $payment->isSuccess(); // check if TapPayment has successfully handled request.
 }
 ```
-### Find ApiInvoice
+
+### Getting an invoice
+
 ```php
-public function check( $id )
+public function check($id)
 {
-	try{
-	
-		 $invoice = TapPayment::findCharge( $id );;
-		 
-	 } catch( \Exception $exception ){
+	try {
+		 $invoice = TapPayment::findCharge($id);
+	 } catch(\Exception $exception) {
 		// your handling of request failure
 	}
+
 	$invoice->checkHash($request->header('Hashstring')); // check hashstring to make sure that request comes from Tap
 	$invoice->isSuccess(); // check if invoice is paid
 	$invoice->isInitiated(); // check if invoice is unpaid yet

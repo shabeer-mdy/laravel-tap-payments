@@ -1,12 +1,13 @@
 vendor/
 node_modules/
 npm-debug.log
+.idea/
 
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
 
-# Laravel 5 & Lumen specific
+# Laravel & Lumen specific
 public/storage
 public/hot
 storage/*.key
