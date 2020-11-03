@@ -1,13 +1,13 @@
 <?php
 
-namespace VMdevelopment\TapPayment;
+namespace Tap\TapPayment;
 
-use VMdevelopment\TapPayment\Services\Charge;
+use Tap\TapPayment\Services\Charge;
 
 class TapService
 {
 	/**
-	 * @return \VMdevelopment\TapPayment\Services\Charge
+	 * @return \Tap\TapPayment\Services\Charge
 	 */
 	public function createCharge()
 	{

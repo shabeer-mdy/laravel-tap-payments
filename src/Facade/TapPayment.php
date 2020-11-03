@@ -1,16 +1,16 @@
 <?php
 
-namespace VMdevelopment\TapPayment\Facade;
+namespace Tap\TapPayment\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class TapPayment
  *
- * @package VMdevelopment\TapPayment\Facade
+ * @package Tap\TapPayment\Facade
  *
- * @method static \VMdevelopment\TapPayment\Services\Charge createCharge()
- * @method static \VMdevelopment\TapPayment\Resources\Invoice findCharge()
+ * @method static \Tap\TapPayment\Services\Charge createCharge()
+ * @method static \Tap\TapPayment\Resources\Invoice findCharge()
  */
 class TapPayment extends Facade
 {

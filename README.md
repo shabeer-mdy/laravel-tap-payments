@@ -15,21 +15,21 @@ Update your `/config/app.php` with:
 ```
 'providers' => [
     ...
-	\VMdevelopment\TapPayment\TapPaymentServiceProvider::class
+	\Tap\TapPayment\TapPaymentServiceProvider::class
 ]
 ```
 
 ```
 'aliases' => [
     ...
-	'TapPayment' => \VMdevelopment\TapPayment\Facade\TapPayment::class
+	'TapPayment' => \Tap\TapPayment\Facade\TapPayment::class
 ]
 ```
 
 ## Publishing
 
 ```
-php artisan vendor:publish --provider="VMdevelopment\TapPayment\TapPaymentServiceProvider"
+php artisan vendor:publish --provider="Tap\TapPayment\TapPaymentServiceProvider"
 ```
 
 
@@ -53,7 +53,7 @@ TAP_PAYMENT_API_KEY=your_api_key
 ### Creating a charge
 
 ```php
-use VMdevelopment\TapPayment\Facade\TapPayment;
+use Tap\TapPayment\Facade\TapPayment;
 
 public function pay()
 {

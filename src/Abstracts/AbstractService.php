@@ -1,6 +1,6 @@
 <?php
 
-namespace VMdevelopment\TapPayment\Abstracts;
+namespace Tap\TapPayment\Abstracts;
 
 use GuzzleHttp\Client;
 

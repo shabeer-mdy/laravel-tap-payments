@@ -1,6 +1,6 @@
 <?php
 
-namespace VMdevelopment\TapPayment;
+namespace Tap\TapPayment;
 
 use Illuminate\Support\ServiceProvider;
 
