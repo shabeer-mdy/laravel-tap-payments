@@ -1,8 +1,13 @@
 {
-  "name": "vmdevelopment/laravel-tap-payments",
+  "name": "spacemudd/laravel-tap-payments",
   "description": "Tap Payment REST API package for Laravel",
   "license": "MIT",
   "authors": [
+    {
+      "name": "Shafiq al-Shaar",
+      "email": "hello@getshafiq.com",
+      "homepage": "https://getShafiq.com/"
+    },
     {
       "name": "Vanand Mkrtchyan",
       "email": "vanand@vm-development.com",
