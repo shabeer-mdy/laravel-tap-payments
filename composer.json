@@ -24,18 +24,18 @@
   },
   "autoload": {
     "psr-4": {
-      "VMdevelopment\\TapPayment\\": "src/"
+      "Tap\\TapPayment\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "VMdevelopment\\TapPayment\\Tests\\": "tests/"
+      "Tap\\TapPayment\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "VMdevelopment\\TapPayment\\TapPaymentServiceProvider"
+        "Tap\\TapPayment\\TapPaymentServiceProvider"
       ]
     }
   }
