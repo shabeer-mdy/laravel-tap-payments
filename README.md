@@ -60,7 +60,7 @@ public function pay()
 	try {
 		$payment = TapPayment::createCharge();
 		$payment->setCustomerName("John Doe");
-		$payment->setCustomerPhone("123456789");
+		$payment->setCustomerPhone("965", "123456789");
 		$payment->setDescription("Some description");
 		$payment->setAmount(123);
 		$payment->setCurrency("KWD");
